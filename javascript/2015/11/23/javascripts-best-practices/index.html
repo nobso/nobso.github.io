@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>javascript best practices</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+    <meta name="google-site-verification" content="bA7TFE45AYZitJS4lv3kbkHWnARyuh2v17CCwt3Y2n8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/sureshkm-favicon-32x32.ico">
+    <!-- Custom CSS & Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Custom Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><i class="fa fa-bars"></i></button>
+            <a class="navbar-brand" href="//sureshkm.com">
+                <span class="light">
+                    <img src="/assets/images/sureshkm-white.png">sureshkm
+                </span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden"><a href="#page-top"></a></li>
+                <li><a class="page-scroll" href="#about">About</a></li>
+                <li><a class="page-scroll" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="post container-fluid">
+    <div class="row col-box">
+        <div class="col-md">
+            <div class="post-title">Javascript best practices</div>
+            <div class="post-content"><p>We have been using the JavaScript&nbsp;as a supporting or main language for our development.</p>
+<!--more-->
+<p><strong>general rules:</strong></p>
+<ol>
+    <li>let’s have all the JavaScript&nbsp;file names in small letters with the .js notation at the end</li>
+    <li>no need to use the “type=text/javascript” in the “script” element as the ‘type’ is supposed to be “type=application/javascript”.ON top of this, browsers do NOTHING with this attribute, it is the server which decides the MIME type from the request. So we may reduce the data transfer rate in the channel</li>
+    <li>indentation should start with 4 spaces. Do NOT use the tabs. So far, we have been using ‘tabstops’ which is not a recommended W3C&nbsp;standard, so we should always use the spaces for indentation. Put the following lines in your .vimrc file though it can be put per file basis</li>
+    <li>set tabstop=4<br />
+    set shiftwidth=4<br />
+    set expandtab</li>
+    <li>line length should not be more than 80 chars</li>
+    <li>use the K&amp;R style, putting the { at the end of a line instead of the front, because it avoids a horrible design blunder in JavaScript’s return statement. reference:&nbsp;<a title="K&amp;R Style of coding" href="http://en.wikipedia.org/wiki/Indent_style#K.26R_style" target="_blank">K&amp;R Style</a></li>
+    <li>avoid using the block comments ( /* ….. */ ) to comment the code which might generate error when used with regular expression. So try to use the line comments ( // ) as much as possible. use block comments for formal documentation and for commenting out the codes</li>
+    <li>It is almost always better to use the “===” and “!==” operators. The&nbsp;<code>= and&nbsp;</code>operators do type coercion</li>
+    <li>namespace should be in all small letters</li>
+</ol>
+
+<div><strong>variable rules:</strong></div>
+<ol>
+    <li>declare all the variables at the beginning of the function body as it is easy to find the implied global, moreover blocks in JavaScript&nbsp;do not create a new scope</li>
+    <li>it is preferred that each variable be given its own line and comment or YUI Doc commenting block</li>
+    <li>use ‘var’ statement while declaring to avoid the implied global variables</li>
+    <li>they should be listed in alphabetical order</li>
+    <li>dont use “_” as the first character of a name</li>
+    <li>all the variables should start with a lower case letter. It should be a camel case</li>
+    <li>global variables should be in all caps. Recommendation is that “dont use global variables”, its a performance issue. Use of global variables should be minimized. Implied global variables should never be used</li>
+    <li>should use semicolon at the end of each statement</li>
+    <li>use capital letters for the super global variable</li>
+</ol>
+
+<div><strong>function rules:</strong></div>
+<ol>
+    <li>names should be in camelcase letters (The first letter of a camel case compound should not be capitalized)</li>
+    <li>constructor functions which must be used with the new prefix should start with a capital letter Example – new String();</li>
+    <li>if a return statement returns a value, that value expression must begin on the same line as the return</li>
+    <li>Use {} instead of new Object(). Use [] instead of new Array(). Always Object literals are a convenient notation for specifying new objects</li>
+    <li>for .. in – has no guarantee on the order of the names. So if you really need this, then make an array containing the names of the properties in the correct order and loop thro’ it</li>
+    <li>there should be no space between the name of a function and the ( (left parenthesis) of its parameter list. There should be one space between the ) (right parenthesis) and the { (left curly brace) that begins the statement body. The body itself is indented four spaces. The } (right curly brace) is aligned with the line containing the beginning of the declaration of the function.</li>
+    <li>if a function literal is anonymous, there should be one space between the word function and the ( (left parenthesis). If the space is omitted, then it can appear that the function’s name is function, which is an incorrect reading</li>
+    <li>if the constructor expects a large number of parameters (may be more than 3), write the constructor to accept a single object specifier instead</li>
+</ol>
+
+<div><strong>array rules:</strong></div>
+<ol>
+    <li>use arrays when the member names would be sequential integers. Use objects when the member names are arbitrary strings or names</li>
+    <li>avoid using the ‘continue’ statement</li>
+    <li>try to avoid the global variable inside the loop</li>
+</ol>
+
+<div><strong>NEVER ever rules:</strong></div>
+<ol>
+    <li>eval is Evil – why is this evil? ’cause it compiles and executes the piece of the statement ,Of ocurse, there is a security concerns as well</li>
+    <li>when given string arguments, setTimeout and setInterval act as eval. The string argument form also should be avoided</li>
+</ol>
+
+<div><strong>performance:</strong></div>
+<ol>
+    <li>reduce the use of the global variables. If its used more than once, the assign to the local variable always try to use local variables which is the fastest way to access the data</li>
+    <li>try to minimize the property depth, the deeper you go, the longer it takes to retrieve the data</li>
+    <li>keep the loops small</li>
+    <li>minimize DOM interaction</li>
+</ol>
+
+<div><strong>good to have:</strong></div>
+<ol>
+    <li>create a common exception handling object for your project</li>
+    <li>augment the basic types, by which we can make significant improvements to the expressiveness of the language</li>
+    <li>while writing a new method, use the callbacks to make sure that the execution is not blocked</li>
+    <li>while coding,&nbsp;<strong>run JSLint</strong>, this will take care of most of the above things in case, if you miss.</li>
+</ol>
+<p><em>references: <a title="JavaScript: The Good Parts" href="http://www.crockford.com/" target="_blank">Douglas Crockford</a></em><a title="JavaScript: The Good Parts" href="http://www.crockford.com/" target="_blank">‘s JavaScript: The Good Parts </a>&amp; others</p>
+</div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container text-center">
+        <p>copyright &copy; sureshkm.com 2015</p>
+        <p class="disclaimer">disclaimer: sureshkm.com web blog is only for the information purpose. This is my personal weblog. The opinions expressed here represent my own and not those of my current/previous employer. Feel free to disagree with me, or tell me I’m completely wrong in my opinion on my blog. Please DO NOT spam this web site with obscene, prurient, hate-filled, pornographic and other useless content.</p>
+    </div>
+</footer>
+
+<script src="/assets/js/script.js"></script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-48308546-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>

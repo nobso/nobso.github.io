@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>a quick javascript refresh</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+    <meta name="google-site-verification" content="bA7TFE45AYZitJS4lv3kbkHWnARyuh2v17CCwt3Y2n8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/sureshkm-favicon-32x32.ico">
+    <!-- Custom CSS & Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Custom Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><i class="fa fa-bars"></i></button>
+            <a class="navbar-brand" href="//sureshkm.com">
+                <span class="light">
+                    <img src="/assets/images/sureshkm-white.png">sureshkm
+                </span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden"><a href="#page-top"></a></li>
+                <li><a class="page-scroll" href="#about">About</a></li>
+                <li><a class="page-scroll" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="post container-fluid">
+    <div class="row col-box">
+        <div class="col-md">
+            <div class="post-title">A quick javascript refresh</div>
+            <div class="post-content"><p>This is a quick javascript knowledge refresh.</p>
+<!--more-->
+
+<ol>
+    <li>In Javascript, we deal with objects. Its an Object Oriented Programming language. We have been using ES 3 standard. Most of us are already using ES5 without knowing. All developer friendly browsers are already supporting ES5.</li>
+    <li>The primitive data types: <strong>number, string, boolean, null, undefined</strong>. Functions are also objects here.</li>
+    <li>There are 2 types of objects – 1. <strong>Host Objects </strong>2.<strong> Native Objects</strong></li>
+    <li><strong>Prototypes</strong> are used for the inheritance purpose. Each function we create will have prototype property attached to it.</li>
+    <li>Avoid globals to avoid variable pollutions, <strong>NO implied globals</strong> &amp; use <strong>single “var” pattern</strong></li>
+    <li>Variable <strong>hoisting</strong> and functional hoisting</li>
+    <li>“eval” is evil as the experts say. be careful while using <strong>eval, setTimeout, setInterval and Function</strong> constructor</li>
+    <li><strong>parseInt()</strong> problem when used without radix. This is taken care in ES5.</li>
+    <li>Use always object literal to create an object, but you should know about the Object constructor as well.</li>
+<p>Example:</p>
+<p style="text-align: left; padding-left: 30px;"><code>var myObj = {} // object literal</code><br />
+This is not an empty object, this will go up to the prototype chain while using for .. in.<br />
+  To create an empty object,<br /> <code>var myObj = Object.create(null); // this is purely an empty obejct</code><br />
+So you dont need to use hasOwnProperty() method to filter the prototype objects.</p>
+    <li>In case if you dont&nbsp;deliberately return anything from a&nbsp;constructor, it will always return an object NOT “undefined” as the functions do. Constructors “this” object is an instance of that constructor NOT the global “this”. This should be called with new.</li>
+    <li>Use array literal instead of the Array constructor. There may be an issue with Array constructor.</li>
+    <li>Functions are the first class objects, If you dont return anything from the function, the “this” will be returned which is a global env. “this”. In ES5, this “this” is no longer pointing to the global “this”. I think, its empty.</li>
+    <li>If the function declaration defined at the bottom of the scope, the function declaration and definition will be hoisted. That’s why you are free add function declaration anywhere in the code. But if you use, function statement, only the declaration will be hoisted. You should be aware of this.</li>
+    <li>One should know about Closure</li>
+    <li>What are&nbsp;Memoization &amp; Currying?</li>
+    <li>JSlint, YUIDoc</li>
+</ol>
+</div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container text-center">
+        <p>copyright &copy; sureshkm.com 2015</p>
+        <p class="disclaimer">disclaimer: sureshkm.com web blog is only for the information purpose. This is my personal weblog. The opinions expressed here represent my own and not those of my current/previous employer. Feel free to disagree with me, or tell me I’m completely wrong in my opinion on my blog. Please DO NOT spam this web site with obscene, prurient, hate-filled, pornographic and other useless content.</p>
+    </div>
+</footer>
+
+<script src="/assets/js/script.js"></script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-48308546-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>

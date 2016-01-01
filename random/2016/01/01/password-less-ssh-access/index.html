@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>A quick javascript refresh</title>
+    <title>How to setup password-less login using ssh keys</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="">
     <meta name="google-site-verification" content="bA7TFE45AYZitJS4lv3kbkHWnARyuh2v17CCwt3Y2n8" />
@@ -47,33 +47,51 @@
 <div class="post container-fluid">
     <div class="row col-box">
         <div class="col-md">
-            <div class="post-title">A quick javascript refresh</div>
-            <div class="post-content"><p>This is a quick javascript knowledge refresh.</p>
+            <div class="post-title">How to setup password-less login using ssh keys</div>
+            <div class="post-content"><p>How to setup a password-less login using ssh keys to connect to remote linux servers without entering password.</p>
+<p>Why do you need this? 'cause you don't need to enter the password everytime you connect (ssh) to the server, in addition to this, using a password-less login with ssh keys will increase the trust between two servers for easy file synchronization or transfer.</p>
 <!--more-->
-
-<ol>
-    <li>In Javascript, we deal with objects. Its an Object Oriented Programming language. We have been using ES 3 standard. Most of us are already using ES5 without knowing. All developer friendly browsers are already supporting ES5.</li>
-    <li>The primitive data types: <strong>number, string, boolean, null, undefined</strong>. Functions are also objects here.</li>
-    <li>There are 2 types of objects – 1. <strong>Host Objects </strong>2.<strong> Native Objects</strong></li>
-    <li><strong>Prototypes</strong> are used for the inheritance purpose. Each function we create will have prototype property attached to it.</li>
-    <li>Avoid globals to avoid variable pollutions, <strong>NO implied globals</strong> &amp; use <strong>single “var” pattern</strong></li>
-    <li>Variable <strong>hoisting</strong> and functional hoisting</li>
-    <li>“eval” is evil as the experts say. be careful while using <strong>eval, setTimeout, setInterval and Function</strong> constructor</li>
-    <li><strong>parseInt()</strong> problem when used without radix. This is taken care in ES5.</li>
-    <li>Use always object literal to create an object, but you should know about the Object constructor as well.</li>
-<p>Example:</p>
-<p style="text-align: left; padding-left: 30px;"><code>var myObj = {} // object literal</code><br />
-This is not an empty object, this will go up to the prototype chain while using for .. in.<br />
-  To create an empty object,<br /> <code>var myObj = Object.create(null); // this is purely an empty obejct</code><br />
-So you dont need to use hasOwnProperty() method to filter the prototype objects.</p>
-    <li>In case if you dont&nbsp;deliberately return anything from a&nbsp;constructor, it will always return an object NOT “undefined” as the functions do. Constructors “this” object is an instance of that constructor NOT the global “this”. This should be called with new.</li>
-    <li>Use array literal instead of the Array constructor. There may be an issue with Array constructor.</li>
-    <li>Functions are the first class objects, If you dont return anything from the function, the “this” will be returned which is a global env. “this”. In ES5, this “this” is no longer pointing to the global “this”. I think, its empty.</li>
-    <li>If the function declaration defined at the bottom of the scope, the function declaration and definition will be hoisted. That’s why you are free add function declaration anywhere in the code. But if you use, function statement, only the declaration will be hoisted. You should be aware of this.</li>
-    <li>One should know about Closure</li>
-    <li>What are&nbsp;Memoization &amp; Currying?</li>
-    <li>JSlint, YUIDoc</li>
-</ol>
+<p>Login to your development server, then generate the public keys using the following command, you can have different key file name than the default one (id_rsa)<br />
+<pre>
+~&#160;» ssh-keygen -t rsa<br />
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/sureshkm/.ssh/id_rsa): [Press enter key]
+Created directory '/home/sureshkm/.ssh'.
+Enter passphrase (empty for no passphrase): [Press enter key]
+Enter same passphrase again: [Press enter key]
+Your identification has been saved in /home/sureshkm/.ssh/id_rsa.
+Your public key has been saved in /home/sureshkm/.ssh/id_rsa.pub.
+The key fingerprint is:
+af:4c:21:71:34:14:45:n9:5e:14:g0:db:8d:49:50:4c [local server name]
+The key's randomart image is: ...
+</pre>
+<p>Move the .pub key into the server where you want to connect with typing password every time. Don't ever share the private key with anyone.</p>
+<pre>
+~&#160;» cat .ssh/id_rsa.pub | ssh admin@sureshkm.com 'cat &gt;&gt; .ssh/authorized_keys'
+    admin@sureshkm.com's password: [Enter your password here] 
+</pre><br />
+<p>Due to different SSH versions on servers, we need to set permissions on .ssh directory and authorized_keys file.<br />
+</p>
+<pre>
+~&#160;» ssh admin@sureshkm.com &quot;chmod 700 .ssh; chmod 640 .ssh/authorized_keys&quot;
+    admin@sureshkm.com's password: [Enter your password here] 
+</pre><br />
+<p>Now edit the .ssh/config file and add the following code into it. Host (production) can have any name that you want to use with ssh.</p>
+<pre>
+ # the host name used to connect to the server
+ Host production
+     HostName sureshkm.com
+     User sureshkm
+     # this is a private key which is created using the ssh-keygen command
+     IdentityFile &quot;~/.ssh/ida_rsa&quot;
+</pre>
+<p><br />
+From now onwards you can log into sureshkm.com as <b>sureshkm</b> user from your development server without entering the password. Enter the following command to connect to the sureshkm.com server<br />
+</p>
+<pre>
+~&#160;» ssh production
+</pre>
+</p>
 </div>
         </div>
     </div>

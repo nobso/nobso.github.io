@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Why do we need a css pre-processor?</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+    <meta name="google-site-verification" content="bA7TFE45AYZitJS4lv3kbkHWnARyuh2v17CCwt3Y2n8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/sureshkm-favicon-32x32.ico">
+    <!-- Custom CSS & Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Custom Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400,600" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"><i class="fa fa-bars"></i></button>
+            <a class="navbar-brand" href="//sureshkm.com">
+                <span class="light">
+                    <img src="/assets/images/sureshkm-white.png">sureshkm
+                </span>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <ul class="nav navbar-nav">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="hidden"><a href="#page-top"></a></li>
+                <li><a class="page-scroll" href="#about">About</a></li>
+                <li><a class="page-scroll" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="post container-fluid">
+    <div class="row col-box">
+        <div class="col-md">
+            <div class="post-title">Why do we need a css pre-processor?</div>
+            <div class="post-content"><p>I did not want to maintain one more layer of code base in my projects, so i have tried a few different non-preproccessor approaches to build the CSS components in my projects. They are good but unfortunately i could not avoid the code repetitions and maintainability problems as our project grows bigger and faster. So now i think that a CSS pre-processor would help me to achieve writing reusable, maintainable and extensible codes in CSS. <br />
+<!--more--></p>
+
+<h3 id="notable-css-pre-processors">Notable CSS pre-processors</h3>
+<p>A few popular pre-processors in the industry (as of Jan 2016) that i explored are listed below.</p>
+
+<h4 id="sass-syntactically-awesome-stylesheets">1. Sass (Syntactically Awesome Stylesheets)</h4>
+
+<p>Sass is a scripting language that is interpreted into Cascading Style Sheets (CSS) like all other CSS pre-processors. The official implementation of Sass is open-source and coded in Ruby; however, other implementations that exist like libSass (C version), JSass (JAVA version) etc.</p>
+
+<h4 id="less">2. Less</h4>
+
+<p>Less is a scripting language that is interpreted into Cascading Style Sheets (CSS). Less is influenced by Sass and has influenced the newer “SCSS” syntax of Sass, which adapted its CSS-like block formatting syntax. The first version was written in Ruby (Sass’s influence!), then later on replaced by JavaScript.</p>
+
+<h4 id="stylus">3. Stylus</h4>
+<p>Style is similar to Sass and Less. Its design is influenced by Sass and LESS :). It is written in JADE and Node.js.</p>
+
+<h3 id="how-does-my-project-benefit-from-this">How does my project benefit from this?</h3>
+
+<h4 id="vendor-prefixes">1. Vendor-Prefixes</h4>
+<p>The web is evolving and there are a lot of new styles are being introduced by different vendors. It’s hard to maintain the browser compatibility in a big project. The pre-processor already has enough mixins to take care of this task. A few basic properties that are used in our project are border-radius, box-shadow etc.</p>
+
+<p>Example: The “Autoprefixer” parses CSS files and adds vendor prefixes to CSS rules using the Can I Use. This would keep our CSS library updated to the latest changes.</p>
+
+<h4 id="breakpoints-and-conditional-statements">2. Breakpoints and Conditional Statements</h4>
+<p>This is very important for our project as we use RWD pattern. It’s hard to maintain in my current project as they are scattered everywhere (module level and root level).</p>
+
+<h4 id="variables">3. Variables</h4>
+<p>It prevents me from having to search through our code for some value. It can be anything, not just a color value. If the height of an element needs to be the same as the height of another element, it would be easy to use the variable. It is easy to maintain.</p>
+
+<h4 id="import">4. Import</h4>
+<p>Import would be useful to split my code into small pieces, so that the maintainability would be easier. For example, i can have all the CSS components like buttons, form fields, grid etc into their respective files and import them in a base CSS file.</p>
+
+<h4 id="functions">5. Functions</h4>
+<p>They can be extremely useful for creating gradients, darker hover colors, and much more. Already i’ve so many gradients all over the place already.<br />
+Example: <code class="highlighter-rouge">rgba();</code></p>
+
+<h4 id="css-linting">6. CSS Linting</h4>
+<p>I can run CSS linting tool to look for problematic patterns or signs of inefficiency.</p>
+
+<h3 id="what-could-be-the-best-fit">What could be the best fit?</h3>
+<p>To be honest, all the above listed pre-processors are good, so it’s hard to say which one is the best. But based on the my experience and some online readings, i think that ‘Sass’ (.scss style) is best fit for my project.</p>
+
+<h4 id="syntax-difference">1. Syntax Difference</h4>
+<p>Sass (.scss) and LESS both use the standard CSS syntax.</p>
+
+<p>Stylus is much more verbose that allows the classic/standard CSS syntax, but it also accepts some other variations, this is kind of loosely typed language.</p>
+
+<h5 id="decision">Decision</h5>
+<p><code class="highlighter-rouge">We don't want to write CSS in a different syntax. So Stylus does not qualify from the list.</code></p>
+
+<h4 id="variable">2. Variable</h4>
+<p>Sass variables are prefixed with the $ symbol and the value &amp; name are separated with a colon, just like a CSS property.</p>
+
+<p>LESS variables are exactly the same as Sass variables, except the variable names are prefixed with the @ symbol.</p>
+
+<p>Stylus variables don’t require anything to be prefixed to them, although it allows the $ symbol and semicolon.</p>
+
+<h5 id="decision-1">Decision</h5>
+<p><code class="highlighter-rouge">I don't want to use more verbose or the symbol that is similar standard CSS import/media query rules. That would be confusing. So Less and Stylus don't qualify.</code></p>
+
+<h4 id="mixins">3. Mixins</h4>
+<p>Sass uses @mixin keyword for creating mixin and @include to call the mixin.</p>
+
+<p>Less allows us to mix-in class selectors and id selectors. Example <code class="highlighter-rouge">.p{}; h1 {.p();}</code></p>
+
+<p>Stylus uses no style, mixins and functions look the same.</p>
+
+<h5 id="decision-2">Decision</h5>
+<p><code class="highlighter-rouge">The 'mixins' should have some syntax that is not messing up with standard CSS styles. So Less and Stylus don't qualify.</code></p>
+
+<h4 id="functions-1">4. Functions</h4>
+<p>Sass uses @function for the declaration and @return for returning the value.</p>
+
+<p>Less’ mixin can be used a function. Variables and mixins defined in a mixin are visible and can be used in caller’s scope. There is only one exception, variable is not copied if the caller contains a variable with the same name (that includes variables defined by another mixin call). Only variables present in callers local scope are protected. Variables inherited from parent scopes are overridden.</p>
+
+<p>Stylus uses no style, mixins and functions look the same.</p>
+
+<h5 id="decision-3">Decision</h5>
+<p><code class="highlighter-rouge">Less is confusing and Stylus style is not distinctive and may lead us to introduce bugs. So Less and Stylus don't qualify.</code></p>
+
+<h4 id="inheritance">5. Inheritance</h4>
+<p>Sass uses @extend keyword for inheriting the CSS class.</p>
+
+<p>Less extends either attached to a selector or placed into a ruleset.</p>
+
+<p>Stylus is similar to Sass.</p>
+
+<h5 id="decision-4">Decision</h5>
+<p><code class="highlighter-rouge">All are similar</code></p>
+
+<hr />
+
+<h3 id="hmm-so-i-opted-to-use-scss-in-my-projects">Hmm.. so i opted to use .SCSS in my projects</h3>
+<hr />
+
+</div>
+        </div>
+    </div>
+</div>
+<section id="about" class="container content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2>About me</h2>
+            <p>I’m sureshkm, i’ve been working in Yahoo for almost a decade. Before Yahoo, i was part of a few start ups.</p>
+            <p>All i want to say is that, there is NOTHING new in my blogs, BUT there is SOMETHING to be shared.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="container content-section text-center">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2>Contact me</h2>
+            <p>You got any comments for me? <a href="mailto:admin@sureshkm.com">admin@sureshkm.com</a></p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container text-center">
+        <p>copyright &copy; sureshkm.com 2016</p>
+        <p class="disclaimer">disclaimer: sureshkm.com web blog is only for the information purpose. This is my personal weblog. The opinions expressed here represent my own and not those of my current/previous employer. Feel free to disagree with me, or tell me I’m completely wrong in my opinion on my blog. Please DO NOT spam this web site with obscene, prurient, hate-filled, pornographic and other useless content.</p>
+    </div>
+</footer>
+
+<script src="/assets/js/script.js" async defer></script>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-48308546-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>
